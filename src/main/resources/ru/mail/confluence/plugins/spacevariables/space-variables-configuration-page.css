@@ -1,0 +1,12 @@
+#space-variables-configuration-dialog {
+    width: 800px;
+    height: 300px;
+    top: 140px;
+}
+
+#space-variables-configuration-dialog form {
+    margin: 0;
+    height: 340px;
+    padding: 10px 20px 20px 20px;
+    overflow: hidden;
+}

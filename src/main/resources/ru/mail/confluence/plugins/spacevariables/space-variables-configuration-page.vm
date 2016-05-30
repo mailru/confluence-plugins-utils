@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>$action.getText( "ru.mail.confluence.plugins.spacevariables.title" )</title>
+        <meta name="decorator" content="main"/>
+        #requireResource( "ru.mail.confluence.plugins.spacevariables:space-variables-configuration-resource" )
+    </head>
+    #applyDecorator( "root" )
+        #decoratorParam( "helper" $action.helper )
+        #decoratorParam( "context" "space-operations" )
+
+        #applyDecorator ( "root")
+            #decoratorParam ( "context" "spacecontentpanel" ) 
+            #decoratorParam ( "selection" "space-variables-configuration" ) 
+            #decoratorParam ( "helper" $action.helper )
+            <body class="pagecontent">
+            <header class="aui-page-header">
+                <div class="aui-page-header-inner">
+                    <div class="aui-page-header-main">
+                        <h2>$i18n.getText( "ru.mail.confluence.plugins.spacevariables.description" )</h2>
+                    </div>
+                    <div class="aui-page-header-actions">
+                        <div class="aui-buttons">
+                            <a href="#" id="add-space-variable" class="aui-button">
+                                <span class="icon icon-add-page"></span>
+                                $i18n.getText( "ru.mail.confluence.plugins.spacevariables.configuration.add" )
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <table class="aui aui-table-rowhover">
+                <thead>
+                <tr>
+                    <th>$i18n.getText( "name.word" )</th>
+                    <th>$i18n.getText( "page.word" )</th>
+                    <th>$i18n.getText( "description.word" )</th>
+                    <th>$i18n.getText( "operations.word" )</th>
+                </tr>
+                </thead>
+                <tbody id="space-variables">
+                </tbody>
+            </table>
+            #parse( "ru/mail/confluence/plugins/spacevariables/space-variables-configuration-dialog.vm" )
+            </body>
+        #end
+    #end
+</html>
