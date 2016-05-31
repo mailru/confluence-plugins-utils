@@ -9,7 +9,7 @@ import com.atlassian.confluence.spaces.SpaceManager;
 import com.atlassian.confluence.spaces.actions.SpaceAdminAction;
 import com.atlassian.confluence.user.ConfluenceUser;
 import org.apache.commons.lang3.StringUtils;
-import ru.mail.confluence.plugins.confluenceutils.common.RestExecutor;
+import ru.mail.jira.plugins.commons.RestExecutor;
 import ru.mail.jira.plugins.commons.RestFieldException;
 
 import javax.ws.rs.DELETE;

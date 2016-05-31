@@ -48,7 +48,6 @@
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
         <dependency>ru.mail.confluence.plugins.confluenceutils:space-variables-soy-templates</dependency>
 
-
         <resource type="download" name="space-variables-configuration-dialog.js" location="ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-dialog.js" />
 
         <resource type="download" name="space-variables-configuration-page.css" location="ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-page.css" />
