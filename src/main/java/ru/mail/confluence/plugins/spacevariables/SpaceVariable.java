@@ -14,6 +14,6 @@ public interface SpaceVariable extends Entity {
     String getDescription();
     void setDescription(String description);
 
-    String getSpaceKey();
-    void setSpaceKey(String spaceKey);
+    long getSpaceId();
+    void setSpaceId(long spaceId);
 }

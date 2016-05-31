@@ -56,7 +56,7 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
             @Override
             protected List<SpaceVariableDto> doAction() throws Exception {
                 List<SpaceVariableDto> result = new ArrayList<SpaceVariableDto>();
-                for (SpaceVariable spaceVariable : spaceVariableManager.searchVariables(spaceKey, filter, limit)) {
+                for (SpaceVariable spaceVariable : spaceVariableManager.searchVariables(spaceManager.getSpace(spaceKey).getId(), filter, limit)) {
                     SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
                     Page page = pageManager.getPage(spaceVariable.getPageId());
                     if (page != null)
@@ -90,8 +90,7 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
             @Override
             protected SpaceVariableDto doAction() throws Exception {
                 checkRequireFields(spaceVariableDto.getName(), spaceVariableDto.getPage());
-
-                SpaceVariable spaceVariable = spaceVariableManager.createVariable(spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceVariableDto.getSpaceKey());
+                SpaceVariable spaceVariable = spaceVariableManager.createVariable(spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceManager.getSpace(spaceVariableDto.getSpaceKey()).getId());
                 SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
                 Page page = pageManager.getPage(spaceVariable.getPageId());
                 if (page != null)
@@ -109,7 +108,7 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
             protected SpaceVariableDto doAction() throws Exception {
                 checkRequireFields(spaceVariableDto.getName(), spaceVariableDto.getPage());
 
-                SpaceVariable spaceVariable = spaceVariableManager.updateVariable(spaceVariableDto.getId(), spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceVariableDto.getSpaceKey());
+                SpaceVariable spaceVariable = spaceVariableManager.updateVariable(spaceVariableDto.getId(), spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceManager.getSpace(spaceVariableDto.getSpaceKey()).getId());
                 SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
                 Page page = pageManager.getPage(spaceVariable.getPageId());
                 if (page != null)
@@ -144,21 +143,19 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
 
                 String formattedFilter = filter.trim().toLowerCase();
                 Space space = spaceManager.getSpace(key);
-                if (StringUtils.isEmpty(formattedFilter)) {
-                    for (Page page: pageManager.getPages(space, true)) {
-                        if (permissionManager.hasPermission(confluenceUser, Permission.VIEW, page))
-                            result.add(new ConfluencePageDto(page.getId(), page.getTitle(), page.getUrlPath(), page.getSpaceKey(), page.getSpace().getName()));
+
+                for (Page page: pageManager.getPages(space, true))
+                    if (permissionManager.hasPermission(confluenceUser, Permission.VIEW, page)) {
                         if (result.size() >= 10)
                             break;
+
+                        if (StringUtils.isEmpty(formattedFilter)) {
+                            result.add(new ConfluencePageDto(page.getId(), page.getTitle(), page.getUrlPath(), page.getSpaceKey(), page.getSpace().getName()));
+                            continue;
+                        }
+                        if (StringUtils.containsIgnoreCase(page.getTitle(), formattedFilter) || StringUtils.containsIgnoreCase(formattedFilter, page.getUrlPath()))
+                            result.add(new ConfluencePageDto(page.getId(), page.getTitle(), page.getUrlPath(), page.getSpaceKey(), page.getSpace().getName()));
                     }
-                } else {
-                    for (Page page: pageManager.getPages(space, true)) {
-                        if (permissionManager.hasPermission(confluenceUser, Permission.VIEW, page))
-                            if (StringUtils.containsIgnoreCase(page.getTitle(), formattedFilter) || StringUtils.containsIgnoreCase(formattedFilter, page.getUrlPath()))
-                                if (result.size() < 10)
-                                    result.add(new ConfluencePageDto(page.getId(), page.getTitle(), page.getUrlPath(), page.getSpaceKey(), page.getSpace().getName()));
-                    }
-                }
                 return result;
             }
         }.getResponse();

@@ -24,13 +24,13 @@ public class SpaceVariableManager {
         });
     }
 
-    public SpaceVariable[] searchVariables(final String spaceKey, final String filter, final int limit) {
+    public SpaceVariable[] searchVariables(final long spaceId, final String filter, final int limit) {
         return ao.executeInTransaction(new TransactionCallback<SpaceVariable[]>() {
             @Override
             public SpaceVariable[] doInTransaction() {
                 Query query = StringUtils.isBlank(filter)
-                        ? Query.select().where("SPACE_KEY = ?", spaceKey)
-                        : Query.select().where("SPACE_KEY = ? AND LOWER(NAME) LIKE LOWER(?)", spaceKey, '%' + filter + '%');
+                        ? Query.select().where("SPACE_ID = ?", spaceId)
+                        : Query.select().where("SPACE_ID = ? AND LOWER(NAME) LIKE LOWER(?)", spaceId, '%' + filter + '%');
                 if (limit != 0)
                     query = query.limit(limit);
                 return ao.find(SpaceVariable.class, query.order("NAME"));
@@ -38,7 +38,7 @@ public class SpaceVariableManager {
         });
     }
 
-    public SpaceVariable createVariable(final String name, final long pageId, final String description, final String spaceKey) {
+    public SpaceVariable createVariable(final String name, final long pageId, final String description, final long spaceId) {
         return ao.executeInTransaction(new TransactionCallback<SpaceVariable>() {
             @Override
             public SpaceVariable doInTransaction() {
@@ -46,14 +46,14 @@ public class SpaceVariableManager {
                 variable.setName(name);
                 variable.setPageId(pageId);
                 variable.setDescription(description);
-                variable.setSpaceKey(spaceKey);
+                variable.setSpaceId(spaceId);
                 variable.save();
                 return variable;
             }
         });
     }
 
-    public SpaceVariable updateVariable(final int id, final String name, final long pageId, final String description, final String spaceKey) {
+    public SpaceVariable updateVariable(final int id, final String name, final long pageId, final String description, final long spaceId) {
         return ao.executeInTransaction(new TransactionCallback<SpaceVariable>() {
             @Override
             public SpaceVariable doInTransaction() {
@@ -61,7 +61,7 @@ public class SpaceVariableManager {
                 variable.setName(name);
                 variable.setPageId(pageId);
                 variable.setDescription(description);
-                variable.setSpaceKey(spaceKey);
+                variable.setSpaceId(spaceId);
                 variable.save();
                 return variable;
             }

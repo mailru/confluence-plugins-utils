@@ -15,6 +15,8 @@ public class SpaceVariableDto {
     @XmlElement
     private String description;
     @XmlElement
+    private long spaceId;
+    @XmlElement
     private String spaceKey;
 
     public SpaceVariableDto() {
@@ -24,7 +26,7 @@ public class SpaceVariableDto {
         this.id = spaceVariable.getID();
         this.name = spaceVariable.getName();
         this.description = spaceVariable.getDescription();
-        this.spaceKey = spaceVariable.getSpaceKey();
+        this.spaceId = spaceVariable.getSpaceId();
     }
 
     public int getId() {
@@ -57,6 +59,14 @@ public class SpaceVariableDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public long getSpaceId() {
+        return this.spaceId;
+    }
+
+    public void setSpaceId(long spaceId) {
+        this.spaceId = spaceId;
     }
 
     public String getSpaceKey() {
