@@ -1,4 +1,4 @@
-package ru.mail.confluence.plugins.spacevariables;
+package ru.mail.confluence.plugins.confluenceutils.spacevariables;
 
 import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
@@ -9,7 +9,7 @@ import com.atlassian.confluence.spaces.SpaceManager;
 import com.atlassian.confluence.spaces.actions.SpaceAdminAction;
 import com.atlassian.confluence.user.ConfluenceUser;
 import org.apache.commons.lang3.StringUtils;
-import ru.mail.confluence.plugins.spacevariables.common.RestExecutor;
+import ru.mail.confluence.plugins.confluenceutils.common.RestExecutor;
 import ru.mail.jira.plugins.commons.RestFieldException;
 
 import javax.ws.rs.DELETE;

@@ -1,4 +1,7 @@
-package ru.mail.confluence.plugins.spacevariables;
+package ru.mail.confluence.plugins.confluenceutils.spacevariables;
+
+import ru.mail.confluence.plugins.confluenceutils.spacevariables.ConfluencePageDto;
+import ru.mail.confluence.plugins.confluenceutils.spacevariables.SpaceVariable;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

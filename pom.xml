@@ -6,7 +6,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.mail.confluence.plugins</groupId>
-    <artifactId>spacevariables</artifactId>
+    <artifactId>confluenceutils</artifactId>
     <version>1.0.0.0</version>
 
     <organization>
@@ -14,8 +14,8 @@
         <url>http://corp.mail.ru/en</url>
     </organization>
 
-    <name>Space Variables</name>
-    <description>Link Variables to other Confluence pages.</description>
+    <name>Utils for Confluence</name>
+    <description>Utils for Confluence.</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>

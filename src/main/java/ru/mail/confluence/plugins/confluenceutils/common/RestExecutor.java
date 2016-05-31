@@ -1,4 +1,4 @@
-package ru.mail.confluence.plugins.spacevariables.common;
+package ru.mail.confluence.plugins.confluenceutils.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

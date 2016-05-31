@@ -1,4 +1,4 @@
-define('spacevariables/space-variables-configuration-dialog', ['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
+define('confluenceutils/space-variables-configuration-dialog', ['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     return Backbone.View.extend({
         el: '#space-variables-configuration-dialog',
         events: {
@@ -39,7 +39,7 @@ define('spacevariables/space-variables-configuration-dialog', ['jquery', 'unders
                 placeholder: AJS.I18n.getText('page.word'),
                 allowClear: true,
                 ajax: {
-                    url: AJS.contextPath() + '/rest/spacevariables/1.0/spacevariable/pages?key=' + AJS.params.spaceKey,
+                    url: AJS.contextPath() + '/rest/confluenceutils/1.0/spacevariable/pages?key=' + AJS.params.spaceKey,
                     dataType: 'json',
                     data: function(filter) {
                         return {
@@ -54,12 +54,12 @@ define('spacevariables/space-variables-configuration-dialog', ['jquery', 'unders
                     cache: true
                 },
                 formatResult: function(page) {
-                    return Confluence.Templates.SpaceVariables.confluencePageFormatResult({
+                    return Confluence.Templates.ConfluenceUtils.confluencePageFormatResult({
                         page: page
                     });
                 },
                 formatSelection: function(page) {
-                    return Confluence.Templates.SpaceVariables.confluencePageFormatSelection({
+                    return Confluence.Templates.ConfluenceUtils.confluencePageFormatSelection({
                         page: page
                     });
                 }
@@ -67,7 +67,7 @@ define('spacevariables/space-variables-configuration-dialog', ['jquery', 'unders
         },
         _fillForm: function() {
             if (this.model.id !== undefined) {
-                this.$('.aui-dialog2-header-main').text(AJS.I18n.getText('ru.mail.confluence.plugins.spacevariables.configuration.edit'));
+                this.$('.aui-dialog2-header-main').text(AJS.I18n.getText('ru.mail.confluence.plugins.confluenceutils.spacevariables.configuration.edit'));
                 this.$okButton.text(AJS.I18n.getText('edit.name'));
 
                 this.$('#space-variables-configuration-dialog-name').val(this.model.get('name'));
@@ -76,7 +76,7 @@ define('spacevariables/space-variables-configuration-dialog', ['jquery', 'unders
                 var page = this.model.get('page');
                 this.$('#space-variables-configuration-dialog-page').auiSelect2('data' , {id: page.id, title: page.title, url: page.url, spaceKey: page.spaceKey, spaceName: page.spaceName});
             } else {
-                this.$('.aui-dialog2-header-main').text(AJS.I18n.getText('ru.mail.confluence.plugins.spacevariables.configuration.create'));
+                this.$('.aui-dialog2-header-main').text(AJS.I18n.getText('ru.mail.confluence.plugins.confluenceutils.spacevariables.configuration.create'));
                 this.$okButton.text(AJS.I18n.getText('create.name'));
 
                 this._initPageField();

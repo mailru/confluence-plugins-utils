@@ -35,7 +35,7 @@ AJS.Rte.BootstrapManager.addOnInitCallback(function() {
         dropDownClassName: "space-variable-autocomplete-mentions",
         selectFirstItem: true,
         getHeaderText: function (autoCompleteControl, value) {
-            return AJS.I18n.getText("ru.mail.confluence.plugins.spacevariables.suggestions");
+            return AJS.I18n.getText("ru.mail.confluence.plugins.confluenceutils.spacevariables.suggestions");
         },
         getAdditionalLinks : function (autoCompleteControl, value, callback) {
             return [];
@@ -45,7 +45,7 @@ AJS.Rte.BootstrapManager.addOnInitCallback(function() {
             var dropdownItems = [];
             $.ajax({
                 type: 'GET',
-                url: AJS.contextPath() + '/rest/spacevariables/1.0/spacevariable',
+                url: AJS.contextPath() + '/rest/confluenceutils/1.0/spacevariable',
                 data: {
                     spaceKey: AJS.params.spaceKey,
                     filter: unescapedVal,

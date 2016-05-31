@@ -1,13 +1,13 @@
-require(['jquery', 'backbone', 'spacevariables/space-variables-configuration-dialog'], function($, Backbone, ConfigurationDialog) {
+require(['jquery', 'backbone', 'confluenceutils/space-variables-configuration-dialog'], function($, Backbone, ConfigurationDialog) {
     AJS.toInit(function() {
         /* Models */
         var SpaceVariable = Backbone.Model.extend();
-        var SpaceVariableView = Backbone.Model.extend({urlRoot: AJS.contextPath() + '/rest/spacevariables/1.0/spacevariable/'});
+        var SpaceVariableView = Backbone.Model.extend({urlRoot: AJS.contextPath() + '/rest/confluenceutils/1.0/spacevariable/'});
 
         /* Collections */
         var SpaceVariableCollection = Backbone.Collection.extend({
             model: SpaceVariable,
-            url: AJS.contextPath() + '/rest/spacevariables/1.0/spacevariable?spaceKey=' + AJS.params.spaceKey
+            url: AJS.contextPath() + '/rest/confluenceutils/1.0/spacevariable?spaceKey=' + AJS.params.spaceKey
         });
 
         /* Instances */
@@ -66,7 +66,7 @@ require(['jquery', 'backbone', 'spacevariables/space-variables-configuration-dia
                 var spaceVariableId = $(e.currentTarget).parents('tr').data('id');
                 var spaceVariable = this.collection.get(spaceVariableId);
                 $.ajax({
-                    url: AJS.contextPath() + '/rest/spacevariables/1.0/spacevariable/' + spaceVariableId,
+                    url: AJS.contextPath() + '/rest/confluenceutils/1.0/spacevariable/' + spaceVariableId,
                     type: 'DELETE',
                     error: $.proxy(function(xhr) {
                         alert(xhr.responseText || 'Internal error');
@@ -83,7 +83,7 @@ require(['jquery', 'backbone', 'spacevariables/space-variables-configuration-dia
 
                 var htmlSpaceVariables = '';
                 mainView.collection.each(function(spaceVariable) {
-                    htmlSpaceVariables += Confluence.Templates.SpaceVariables.spaceVariableEntry({
+                    htmlSpaceVariables += Confluence.Templates.ConfluenceUtils.spaceVariableEntry({
                         spaceVariable: spaceVariable.toJSON()
                     });
                 });
