@@ -1,0 +1,44 @@
+{namespace Confluence.Templates.ConfluenceUtils}
+
+/**
+ * Space variable table cell
+ * @param spaceVariable spaceVariable
+*/
+{template .spaceVariableEntry}
+<tr data-id="{$spaceVariable.id}">
+    <td>{$spaceVariable.name}</td>
+    <td>
+        <a href="{$spaceVariable.page.url}" target="_blank">{$spaceVariable.page.title}</a>
+    </td>
+    <td>{$spaceVariable.description}</td>
+    <td>
+        <ul class="menu">
+            <li><a href="#"  class="space-variables-edit">{getText('edit.name')}</a></li>
+            <li><a href="#" class="space-variables-delete">{getText('remove.name')}</span></a></li>
+        </ul>
+    </td>
+</tr>
+{/template}
+
+/**
+ * Confluence page select2 format result
+ * @param page page
+*/
+{template .confluencePageFormatResult}
+<div title="{$page.title}">
+    <span class="icon icon-page"></span>
+    {sp}<b>{$page.title}</b>
+    {sp}<i>({$page.spaceName})</i>
+</div>
+{/template}
+
+/**
+ * Confluence page select2 format selection
+ * @param page page
+*/
+{template .confluencePageFormatSelection}
+<div title="{$page.title}">
+    <span class="icon icon-page"></span>
+    {sp}{$page.title}
+</div>
+{/template}

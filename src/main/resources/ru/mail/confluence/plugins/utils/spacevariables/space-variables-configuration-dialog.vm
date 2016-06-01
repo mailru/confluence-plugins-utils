@@ -1,0 +1,40 @@
+<section role="dialog" id="space-variables-configuration-dialog" class="aui-layer aui-dialog2" aria-hidden="true">
+    <header class="aui-dialog2-header">
+        <h2 id="space-variables-configuration-dialog-header" class="aui-dialog2-header-main"></h2>
+    </header>
+    <div class="aui-dialog2-content">
+        <form class="aui unsectioned ajs-dirty-warning-exempt jsincluder-configuration-dialog-form">
+            <div id="space-variables-configuration-dialog-error-panel" class="aui-message aui-message-error hidden"></div>
+            <div class="field-group">
+                <label for="space-variables-configuration-dialog-name">
+                    <span class="aui-icon icon-required"></span>
+                    $i18n.getText( "name.word" )
+                </label>
+                <input class="text full-width-field" type="text" id="space-variables-configuration-dialog-name" maxlength="254">
+                <div id="space-variables-configuration-dialog-name-error" class="error hidden"></div>
+            </div>
+            <div class="field-group">
+                <label for="space-variables-configuration-dialog-page">
+                    <span class="aui-icon icon-required"></span>
+                    $i18n.getText( "page.word" )
+                </label>
+                <input type="hidden" class="select full-width-field" id="space-variables-configuration-dialog-page"/>
+                <div id="space-variables-configuration-dialog-page-error" class="error hidden"></div>
+            </div>
+            <div class="field-group">
+                <label for="space-variables-configuration-dialog-description">
+                    $i18n.getText( "description.word" )
+                </label>
+                <textarea class="textarea full-width-field" type="text" rows="5" id="space-variables-configuration-dialog-description"></textarea>
+                <div id="space-variables-configuration-dialog-description-error" class="error hidden"></div>
+            </div>
+            <input class="hidden" type="submit" />
+        </form>
+    </div>
+    <footer class="aui-dialog2-footer">
+        <div class="aui-dialog2-footer-actions">
+            <button id="space-variables-configuration-dialog-ok" class="aui-button aui-button-primary"></button>
+            <button id="space-variables-configuration-dialog-cancel" class="aui-button aui-button-link">$i18n.getText("cancel.name")</button>
+        </div>
+    </footer>
+</section>
