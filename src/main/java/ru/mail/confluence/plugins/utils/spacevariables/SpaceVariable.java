@@ -1,4 +1,4 @@
-package ru.mail.confluence.plugins.confluenceutils.spacevariables;
+package ru.mail.confluence.plugins.utils.spacevariables;
 
 import net.java.ao.Entity;
 import net.java.ao.schema.StringLength;

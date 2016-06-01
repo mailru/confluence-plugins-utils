@@ -1,4 +1,4 @@
-package ru.mail.confluence.plugins.confluenceutils.spacevariables;
+package ru.mail.confluence.plugins.utils.spacevariables;
 
 import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
@@ -24,7 +24,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Path("/spacevariable")
 @Produces({MediaType.APPLICATION_JSON})

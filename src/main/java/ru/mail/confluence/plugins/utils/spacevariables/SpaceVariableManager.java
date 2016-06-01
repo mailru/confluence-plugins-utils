@@ -1,10 +1,9 @@
-package ru.mail.confluence.plugins.confluenceutils.spacevariables;
+package ru.mail.confluence.plugins.utils.spacevariables;
 
 import com.atlassian.activeobjects.external.ActiveObjects;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import net.java.ao.Query;
 import org.apache.commons.lang3.StringUtils;
-import ru.mail.confluence.plugins.confluenceutils.spacevariables.SpaceVariable;
 
 public class SpaceVariableManager {
     private final ActiveObjects ao;

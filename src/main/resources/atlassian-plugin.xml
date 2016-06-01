@@ -6,27 +6,27 @@
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
     </plugin-info>
 
-    <resource type="i18n" name="i18n" location="ru/mail/confluence/plugins/confluenceutils/confluenceutils"/>
+    <resource type="i18n" name="i18n" location="ru/mail/confluence/plugins/utils/confluence-utils"/>
 
-    <rest key="rest" path="/confluenceutils" version="1.0" />
+    <rest key="rest" path="/confluence-utils" version="1.0" />
 
     <component-import key="ao" interface="com.atlassian.activeobjects.external.ActiveObjects" />
     <ao key="ao-entities">
-        <entity>ru.mail.confluence.plugins.confluenceutils.spacevariables.SpaceVariable</entity>
+        <entity>ru.mail.confluence.plugins.utils.spacevariables.SpaceVariable</entity>
     </ao>
 
-    <component key="space-variable-manager" class="ru.mail.confluence.plugins.confluenceutils.spacevariables.SpaceVariableManager" />
+    <component key="space-variable-manager" class="ru.mail.confluence.plugins.utils.spacevariables.SpaceVariableManager" />
 
     <web-item key="space-variables-configuration" section="system.space.advanced/advanced" weight="20">
-        <label key="ru.mail.confluence.plugins.confluenceutils.spacevariables.title" />
-        <link linkId="space-variables-configuration-id">/plugins/confluenceutils/spacevariables/configurespacevariables.action?key=$space.key</link>
+        <label key="ru.mail.confluence.plugins.utils.spacevariables.title" />
+        <link linkId="space-variables-configuration-id">/plugins/confluence-utils/spacevariables/configurespacevariables.action?key=$space.key</link>
     </web-item>
 
     <xwork name="space-variables-configuration-action" key="variables-configuration-action">
-        <package name="spacevariables" extends="default" namespace="/plugins/confluenceutils/spacevariables">
+        <package name="spacevariables" extends="default" namespace="/plugins/confluence-utils/spacevariables">
             <default-interceptor-ref name="defaultStack" />
-            <action name="configurespacevariables" class="ru.mail.confluence.plugins.confluenceutils.spacevariables.ConfigureSpaceVariablesAction">
-                <result name="success" type="velocity">/ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-page.vm</result>
+            <action name="configurespacevariables" class="ru.mail.confluence.plugins.utils.spacevariables.ConfigureSpaceVariablesAction">
+                <result name="success" type="velocity">/ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-page.vm</result>
             </action>
         </package>
     </xwork>
@@ -37,7 +37,7 @@
                 <functions>com.atlassian.confluence.plugins.soy:soy-core-functions</functions>
             </transformer>
         </transformation>
-        <resource type="download" name="templates-soy.js" location="ru/mail/confluence/plugins/confluenceutils/templates.soy"/>
+        <resource type="download" name="templates-soy.js" location="ru/mail/confluence/plugins/utils/templates.soy"/>
     </web-resource>
 
     <web-resource key="space-variables-configuration-resource">
@@ -46,12 +46,12 @@
         </transformation>
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
-        <dependency>ru.mail.confluence.plugins.confluenceutils:space-variables-soy-templates</dependency>
+        <dependency>ru.mail.confluence.plugins.confluence-utils:space-variables-soy-templates</dependency>
 
-        <resource type="download" name="space-variables-configuration-dialog.js" location="ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-dialog.js" />
+        <resource type="download" name="space-variables-configuration-dialog.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-dialog.js" />
 
-        <resource type="download" name="space-variables-configuration-page.css" location="ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-page.css" />
-        <resource type="download" name="space-variables-configuration-page.js" location="ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-page.js" />
+        <resource type="download" name="space-variables-configuration-page.css" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-page.css" />
+        <resource type="download" name="space-variables-configuration-page.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-page.js" />
     </web-resource>
 
     <web-resource key="space-variables-editor-autocomplete-resources" name="Space Variables Autocomplete Resources for Confluence Editor">
@@ -60,7 +60,7 @@
         </transformation>
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:aui-experimental-iconfont</dependency>
-        <resource type="download" name="space-variables-mention-autocomplete-binder.js" location="/ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-mention-autocomplete-binder.js"/>
+        <resource type="download" name="space-variables-mention-autocomplete-binder.js" location="/ru/mail/confluence/plugins/utils/spacevariables/space-variables-mention-autocomplete-binder.js"/>
         <context>editor</context>
     </web-resource>
     

@@ -1,8 +1,8 @@
 <html>
     <head>
-        <title>$action.getText( "ru.mail.confluence.plugins.confluenceutils.spacevariables.title" )</title>
+        <title>$action.getText( "ru.mail.confluence.plugins.utils.spacevariables.title" )</title>
         <meta name="decorator" content="main"/>
-        #requireResource( "ru.mail.confluence.plugins.confluenceutils:space-variables-configuration-resource" )
+        #requireResource( "ru.mail.confluence.plugins.confluence-utils:space-variables-configuration-resource" )
     </head>
     #applyDecorator( "root" )
         #decoratorParam( "helper" $action.helper )
@@ -16,13 +16,13 @@
             <header class="aui-page-header">
                 <div class="aui-page-header-inner">
                     <div class="aui-page-header-main">
-                        <h2>$i18n.getText( "ru.mail.confluence.plugins.confluenceutils.spacevariables.description" )</h2>
+                        <h2>$i18n.getText( "ru.mail.confluence.plugins.utils.spacevariables.description" )</h2>
                     </div>
                     <div class="aui-page-header-actions">
                         <div class="aui-buttons">
                             <a href="#" id="add-space-variable" class="aui-button">
                                 <span class="icon icon-add-page"></span>
-                                $i18n.getText( "ru.mail.confluence.plugins.confluenceutils.spacevariables.configuration.add" )
+                                $i18n.getText( "ru.mail.confluence.plugins.utils.spacevariables.configuration.add" )
                             </a>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                 <tbody id="space-variables">
                 </tbody>
             </table>
-            #parse( "ru/mail/confluence/plugins/confluenceutils/spacevariables/space-variables-configuration-dialog.vm" )
+            #parse( "ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-dialog.vm" )
             </body>
         #end
     #end

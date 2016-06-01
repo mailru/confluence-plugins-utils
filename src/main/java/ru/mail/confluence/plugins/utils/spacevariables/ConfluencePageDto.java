@@ -1,4 +1,4 @@
-package ru.mail.confluence.plugins.confluenceutils.spacevariables;
+package ru.mail.confluence.plugins.utils.spacevariables;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
