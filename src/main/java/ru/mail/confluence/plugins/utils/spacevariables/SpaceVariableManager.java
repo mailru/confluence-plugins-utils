@@ -29,8 +29,8 @@ public class SpaceVariableManager {
             @Override
             public SpaceVariable[] doInTransaction() {
                 Query query = StringUtils.isBlank(filter)
-                        ? Query.select().where("SPACE_ID = ?", spaceId)
-                        : Query.select().where("SPACE_ID = ? AND LOWER(NAME) LIKE LOWER(?)", spaceId, '%' + filter + '%');
+                        ? Query.select().where("SPACE_ID = ? AND DELETED = false", spaceId)
+                        : Query.select().where("SPACE_ID = ? AND LOWER(NAME) LIKE LOWER(?) AND DELETED = false", spaceId, '%' + filter + '%');
                 if (limit != 0)
                     query = query.limit(limit);
                 return ao.find(SpaceVariable.class, query.order("NAME"));
@@ -47,6 +47,7 @@ public class SpaceVariableManager {
                 variable.setPageId(pageId);
                 variable.setDescription(description);
                 variable.setSpaceId(spaceId);
+                variable.setDeleted(false);
                 variable.save();
                 return variable;
             }
@@ -62,6 +63,7 @@ public class SpaceVariableManager {
                 variable.setPageId(pageId);
                 variable.setDescription(description);
                 variable.setSpaceId(spaceId);
+                variable.setDeleted(false);
                 variable.save();
                 return variable;
             }
@@ -72,7 +74,9 @@ public class SpaceVariableManager {
         ao.executeInTransaction(new TransactionCallback<Void>() {
             @Override
             public Void doInTransaction() {
-                ao.delete(getVariable(id));
+                SpaceVariable variable = getVariable(id);
+                variable.setDeleted(true);
+                variable.save();
                 return null;
             }
         });

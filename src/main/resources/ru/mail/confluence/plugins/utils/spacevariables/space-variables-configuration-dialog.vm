@@ -14,19 +14,19 @@
                 <div id="space-variables-configuration-dialog-name-error" class="error hidden"></div>
             </div>
             <div class="field-group">
+                <label for="space-variables-configuration-dialog-description">
+                    $i18n.getText( "description.word" )
+                </label>
+                <textarea class="textarea full-width-field" type="text" rows="5" id="space-variables-configuration-dialog-description"></textarea>
+                <div id="space-variables-configuration-dialog-description-error" class="error hidden"></div>
+            </div>
+            <div class="field-group">
                 <label for="space-variables-configuration-dialog-page">
                     <span class="aui-icon icon-required"></span>
                     $i18n.getText( "page.word" )
                 </label>
                 <input type="hidden" class="select full-width-field" id="space-variables-configuration-dialog-page"/>
                 <div id="space-variables-configuration-dialog-page-error" class="error hidden"></div>
-            </div>
-            <div class="field-group">
-                <label for="space-variables-configuration-dialog-description">
-                    $i18n.getText( "description.word" )
-                </label>
-                <textarea class="textarea full-width-field" type="text" rows="5" id="space-variables-configuration-dialog-description"></textarea>
-                <div id="space-variables-configuration-dialog-description-error" class="error hidden"></div>
             </div>
             <input class="hidden" type="submit" />
         </form>

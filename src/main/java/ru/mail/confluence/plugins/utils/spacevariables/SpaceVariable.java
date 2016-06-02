@@ -16,4 +16,7 @@ public interface SpaceVariable extends Entity {
 
     long getSpaceId();
     void setSpaceId(long spaceId);
+
+    boolean getDeleted();
+    void setDeleted(boolean deleted);
 }

@@ -18,6 +18,8 @@ public class SpaceVariableDto {
     private long spaceId;
     @XmlElement
     private String spaceKey;
+    @XmlElement
+    private boolean deleted;
 
     public SpaceVariableDto() {
     }
@@ -27,6 +29,7 @@ public class SpaceVariableDto {
         this.name = spaceVariable.getName();
         this.description = spaceVariable.getDescription();
         this.spaceId = spaceVariable.getSpaceId();
+        this.deleted = spaceVariable.getDeleted();
     }
 
     public int getId() {
@@ -75,5 +78,13 @@ public class SpaceVariableDto {
 
     public void setSpaceKey(String spaceKey) {
         this.spaceKey = spaceKey;
+    }
+
+    public boolean getDeleted() {
+        return this.deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

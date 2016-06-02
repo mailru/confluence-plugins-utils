@@ -7,10 +7,10 @@
 {template .spaceVariableEntry}
 <tr data-id="{$spaceVariable.id}">
     <td>{$spaceVariable.name}</td>
+    <td>{$spaceVariable.description}</td>
     <td>
         <a href="{$spaceVariable.page.url}" target="_blank">{$spaceVariable.page.title}</a>
     </td>
-    <td>{$spaceVariable.description}</td>
     <td>
         <ul class="menu">
             <li><a href="#"  class="space-variables-edit">{getText('edit.name')}</a></li>

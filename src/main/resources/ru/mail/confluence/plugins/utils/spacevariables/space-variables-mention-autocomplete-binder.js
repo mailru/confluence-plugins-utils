@@ -54,7 +54,6 @@ AJS.Rte.BootstrapManager.addOnInitCallback(function() {
                 success: function (result) {
                     for(var i = 0; i < result.length; i++) {
                         var variable = result[i];
-                        console.log(variable);
                         var item = {
                             id: variable.id,
                             title: variable.name,
@@ -77,21 +76,16 @@ AJS.Rte.BootstrapManager.addOnInitCallback(function() {
             callback([dropdownItems], val);
         },
         update : function(autoCompleteControl, link) {
-            Confluence.Link.fromData({
-                attrs: {
-                    "data-base-url": AJS.Confluence.getBaseUrl(),
-                    "data-linked-resource-id": link.pageId,
-                    "data-linked-resource-type": link.type,
-                    "data-linked-resource-content-type": link.contentType,
-                    "data-linked-resource-default-alias": link.alias,
-                    href: AJS.REST.findLink(link.link)
-                },
-                body: {
-                    html: link.title,
-                    text: link.title
-                },
-                classes: ["confluence-link"]
-            }).insert();
+            tinymce.confluence.MacroUtils.insertMacro({
+                contentId: AJS.Meta.get('content-id') || "0",
+                macro: {
+                    name: "space-variables-macro",
+                    params: {
+                        id: link.id
+                    },
+                    body: ""
+                }
+            });
         }
     };
 });

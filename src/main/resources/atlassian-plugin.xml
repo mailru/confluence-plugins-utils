@@ -31,7 +31,7 @@
         </package>
     </xwork>
 
-    <web-resource key="space-variables-soy-templates">
+    <web-resource key="confluence-utils-soy-templates" name="Confluence Utils soy resources">
         <transformation extension="soy">
             <transformer key="soyTransformer">
                 <functions>com.atlassian.confluence.plugins.soy:soy-core-functions</functions>
@@ -40,13 +40,14 @@
         <resource type="download" name="templates-soy.js" location="ru/mail/confluence/plugins/utils/templates.soy"/>
     </web-resource>
 
-    <web-resource key="space-variables-configuration-resource">
+    <web-resource key="space-variables-configuration-resource" name="Space variables configuration resources">
         <transformation extension="js">
             <transformer key="jsI18n"/>
         </transformation>
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>confluence.web.resources:ajs</dependency>
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
-        <dependency>ru.mail.confluence.plugins.confluence-utils:space-variables-soy-templates</dependency>
+        <dependency>ru.mail.confluence.plugins.confluence-utils:confluence-utils-soy-templates</dependency>
+        <dependency>com.atlassian.confluence.tinymceplugin:editor-resources</dependency>
 
         <resource type="download" name="space-variables-configuration-dialog.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-dialog.js" />
 
@@ -54,14 +55,36 @@
         <resource type="download" name="space-variables-configuration-page.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-configuration-page.js" />
     </web-resource>
 
-    <web-resource key="space-variables-editor-autocomplete-resources" name="Space Variables Autocomplete Resources for Confluence Editor">
+    <web-resource key="space-variables-editor-autocomplete-resources" name="Space variables autocomplete resources for confluence editor">
         <transformation extension="js">
             <transformer key="jsI18n"/>
         </transformation>
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>confluence.web.resources:ajs</dependency>
         <dependency>com.atlassian.auiplugin:aui-experimental-iconfont</dependency>
-        <resource type="download" name="space-variables-mention-autocomplete-binder.js" location="/ru/mail/confluence/plugins/utils/spacevariables/space-variables-mention-autocomplete-binder.js"/>
+        <resource type="download" name="space-variables-mention-autocomplete-binder.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-mention-autocomplete-binder.js"/>
         <context>editor</context>
+    </web-resource>
+
+    <xhtml-macro name="space-variables-macro" class="ru.mail.confluence.plugins.utils.spacevariables.SpaceVariableMacro" key="space-variables-macro" hidden="true">
+        <parameters>
+            <parameter name="id" type="int"/>
+        </parameters>
+    </xhtml-macro>
+
+    <servlet name="Space Variables Macro Image Generator Servlet" key="space-variable-macro-image-generator" class="ru.mail.confluence.plugins.utils.spacevariables.ImageGeneratorServlet">
+        <description>Generates a placeholder for provided text parameter for the space variables macro.</description>
+        <url-pattern>/confluence-utils/space-variables-macro/placeholder</url-pattern>
+    </servlet>
+
+    <resource type="download" name="space-variables-macro-placeholder.png" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-macro-placeholder.png">
+        <param name="content-type" value="image/png"/>
+    </resource>
+
+    <web-resource key="space-variables-macro-resources" name="Space variables macro resources">
+        <resource type="download" name="space-variables-macro.css" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-macro.css"/>
+        <resource type="download" name="space-variables-macro.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-macro.js"/>
+        <context>editor</context>
+        <context>editor-content</context>
     </web-resource>
     
 </atlassian-plugin>

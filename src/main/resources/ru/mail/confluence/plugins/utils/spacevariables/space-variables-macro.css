@@ -1,0 +1,7 @@
+.editor-inline-macro[data-macro-name="space-variables-macro"] {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 16px;
+    margin: 0 4px;
+}

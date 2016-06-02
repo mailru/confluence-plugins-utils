@@ -29,12 +29,12 @@
                 </div>
             </header>
 
-            <table class="aui aui-table-rowhover">
+            <table class="aui aui-table-rowhover" id="space-variables-table">
                 <thead>
                 <tr>
                     <th>$i18n.getText( "name.word" )</th>
-                    <th>$i18n.getText( "page.word" )</th>
                     <th>$i18n.getText( "description.word" )</th>
+                    <th>$i18n.getText( "page.word" )</th>
                     <th>$i18n.getText( "operations.word" )</th>
                 </tr>
                 </thead>
