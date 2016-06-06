@@ -48,6 +48,25 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
     }
 
     @GET
+    @Path("/all")
+    public Response getAllSpaceVariables() {
+        return new RestExecutor<List<SpaceVariableDto>>() {
+            @Override
+            protected List<SpaceVariableDto> doAction() throws Exception {
+                List<SpaceVariableDto> result = new ArrayList<SpaceVariableDto>();
+                for (SpaceVariable spaceVariable : spaceVariableManager.getVariables()) {
+                    SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
+                    Page page = pageManager.getPage(spaceVariable.getPageId());
+                    if (page != null)
+                        spaceVariableDto.setPage(new ConfluencePageDto(page.getId(), page.getTitle(), page.getUrlPath(), page.getSpaceKey(), page.getSpace().getName()));
+                    result.add(spaceVariableDto);
+                }
+                return result;
+            }
+        }.getResponse();
+    }
+
+    @GET
     public Response searchSpaceVariables(@QueryParam("spaceKey") final String spaceKey,
                                          @QueryParam("filter") final String filter,
                                          @QueryParam("limit") final int limit) {

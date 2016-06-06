@@ -24,6 +24,15 @@ public class SpaceVariableManager {
         });
     }
 
+    public SpaceVariable[] getVariables() {
+        return ao.executeInTransaction(new TransactionCallback<SpaceVariable[]>() {
+            @Override
+            public SpaceVariable[] doInTransaction() {
+                return ao.find(SpaceVariable.class);
+            }
+        });
+    }
+
     public SpaceVariable[] searchVariables(final long spaceId, final String filter, final int limit) {
         return ao.executeInTransaction(new TransactionCallback<SpaceVariable[]>() {
             @Override
