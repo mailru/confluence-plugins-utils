@@ -3,7 +3,7 @@
 
     function activateMentions() {
         AJS.EventQueue.push({name: 'confluencementioninsert'});
-        Confluence.Editor.Autocompleter.Manager.shortcutFired(CRMCLMentionCharacter, true);
+        Confluence.Editor.Autocompleter.Manager.shortcutFired('#', true);
     }
 
     function isAtKey(event) {

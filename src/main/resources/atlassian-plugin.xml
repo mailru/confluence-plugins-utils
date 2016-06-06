@@ -80,11 +80,14 @@
         <param name="content-type" value="image/png"/>
     </resource>
 
-    <web-resource key="space-variables-macro-resources" name="Space variables macro resources">
+    <web-resource key="space-variables-macro-resources-css" name="Space variables macro css resources">
         <resource type="download" name="space-variables-macro.css" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-macro.css"/>
+        <context>editor-content</context>
+    </web-resource>
+
+    <web-resource key="space-variables-macro-resources-js" name="Space variables macro js resources">
         <resource type="download" name="space-variables-macro.js" location="ru/mail/confluence/plugins/utils/spacevariables/space-variables-macro.js"/>
         <context>editor</context>
-        <context>editor-content</context>
     </web-resource>
     
 </atlassian-plugin>
