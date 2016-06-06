@@ -1,6 +1,6 @@
 #if( $!spaceVariable )
     #if($spaceVariable.deleted)
-        #$spaceVariable.name
+        <s>#$spaceVariable.name</s>
     #else
         <a href='$req.contextPath$url' id="confluence-utils-space-variable-$spaceVariable.ID" title="$spaceVariable.name">#$spaceVariable.name</a>
     #end
