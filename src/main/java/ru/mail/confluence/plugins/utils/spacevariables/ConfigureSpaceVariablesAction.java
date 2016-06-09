@@ -47,6 +47,10 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
             throw new RestFieldException(getI18n().getText("required.field"), "page");
     }
 
+    private boolean isSpaceAdmin(Space space) {
+        return permissionManager.hasPermission(getAuthenticatedUser(), Permission.ADMINISTER, space);
+    }
+
     @GET
     @Path("/all")
     public Response getAllSpaceVariables() {
@@ -107,8 +111,12 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
         return new RestExecutor<SpaceVariableDto>() {
             @Override
             protected SpaceVariableDto doAction() throws Exception {
+                Space space = spaceManager.getSpace(spaceVariableDto.getSpaceKey());
+                if (!isSpaceAdmin(space))
+                    throw new SecurityException();
                 checkRequireFields(spaceVariableDto.getName(), spaceVariableDto.getPage());
-                SpaceVariable spaceVariable = spaceVariableManager.createVariable(spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceManager.getSpace(spaceVariableDto.getSpaceKey()).getId());
+
+                SpaceVariable spaceVariable = spaceVariableManager.createVariable(spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), space.getId());
                 SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
                 Page page = pageManager.getPage(spaceVariable.getPageId());
                 if (page != null)
@@ -124,9 +132,12 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
         return new RestExecutor<SpaceVariableDto>() {
             @Override
             protected SpaceVariableDto doAction() throws Exception {
+                Space space = spaceManager.getSpace(spaceVariableDto.getSpaceKey());
+                if (!isSpaceAdmin(space))
+                    throw new SecurityException();
                 checkRequireFields(spaceVariableDto.getName(), spaceVariableDto.getPage());
 
-                SpaceVariable spaceVariable = spaceVariableManager.updateVariable(spaceVariableDto.getId(), spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), spaceManager.getSpace(spaceVariableDto.getSpaceKey()).getId());
+                SpaceVariable spaceVariable = spaceVariableManager.updateVariable(spaceVariableDto.getId(), spaceVariableDto.getName(), spaceVariableDto.getPage().getId(), spaceVariableDto.getDescription(), space.getId());
                 SpaceVariableDto spaceVariableDto = new SpaceVariableDto(spaceVariable);
                 Page page = pageManager.getPage(spaceVariable.getPageId());
                 if (page != null)
@@ -143,6 +154,10 @@ public class ConfigureSpaceVariablesAction extends SpaceAdminAction {
         return new RestExecutor<Void>() {
             @Override
             protected Void doAction() throws Exception {
+                Space space = spaceManager.getSpace(spaceVariableManager.getVariable(id).getSpaceId());
+                if (!isSpaceAdmin(space))
+                    throw new SecurityException();
+
                 spaceVariableManager.deleteVariable(id);
                 return null;
             }

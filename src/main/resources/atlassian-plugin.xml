@@ -20,6 +20,9 @@
     <web-item key="space-variables-configuration" section="system.space.advanced/advanced" weight="20">
         <label key="ru.mail.confluence.plugins.utils.spacevariables.title" />
         <link linkId="space-variables-configuration-id">/plugins/confluence-utils/spacevariables/configurespacevariables.action?key=$space.key</link>
+        <condition class="com.atlassian.confluence.plugin.descriptor.web.conditions.SpacePermissionCondition">
+            <param name="permission">administer</param>
+        </condition>
     </web-item>
 
     <xwork name="space-variables-configuration-action" key="variables-configuration-action">
