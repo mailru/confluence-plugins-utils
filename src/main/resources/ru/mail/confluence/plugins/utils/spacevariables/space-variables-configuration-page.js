@@ -15,7 +15,7 @@ require(['jquery', 'backbone', 'utils/space-variables-configuration-dialog'], fu
 
         /* View */
         var MainView = Backbone.View.extend({
-            el: 'td.in-page-menu-content',
+            el: 'td.in-page-menu-content, div#space-tools-body',
             events: {
                 'click #add-space-variable': 'addSpaceVariable',
                 'click .space-variables-edit': 'editSpaceVariable',
