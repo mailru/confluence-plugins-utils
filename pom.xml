@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.mail.confluence.plugins</groupId>
     <artifactId>confluence-utils</artifactId>
-    <version>1.0.4.7</version>
+    <version>1.0.5.8</version>
 
     <organization>
         <name>Andrey Molchanov | Mail.Ru Group</name>
@@ -54,6 +54,12 @@
             <artifactId>commons</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
